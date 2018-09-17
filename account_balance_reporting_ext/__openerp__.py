@@ -7,7 +7,7 @@
     "version": "8.0.0.1.0",
     "author": "Jacon Informatica",
     "contributors": [
-        "Javier Marhuenda <javiermarhuenda@gmail.com>",
+        "Javier Marhuenda <info@jacon.es>",
     ],
     "license": "AGPL-3",
     "website": "http://www.jacon.es",
