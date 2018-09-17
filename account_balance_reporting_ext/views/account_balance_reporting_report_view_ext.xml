@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+# © 2017 Jacon Informatica - Javier Marhuenda <info@jacon.es>
+-->
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_account_balance_reporting_form_ext">
+            <field name="name">account.balance.reporting.form</field>
+            <field name="model">account.balance.reporting</field>
+            <field name="inherit_id" ref="account_balance_reporting.view_account_balance_reporting_form"/>
+            <field name="arch" type="xml">
+              <field name="template_id" position="after">
+                <field name="title" string="Título"/>
+                <field name="description" string="Descripción"/>
+              </field>
+            </field>
+        </record>
+    </data>
+</openerp>
