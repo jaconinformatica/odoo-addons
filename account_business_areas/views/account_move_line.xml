@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+# © 2017 Jacon Informatica - Javier Marhuenda <info@jacon.es>
+-->
+<openerp>
+    <data>
+
+        <record id="move_line_form_business_area" model="ir.ui.view">
+            <field name="model">account.move.line</field>
+            <field name="inherit_id" ref="account.view_move_line_form"/>
+            <field name="arch" type="xml">
+                <field name="analytic_account_id" position="after">
+                    <field name="business_area_id"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="move_line_tree_business_area" model="ir.ui.view">
+            <field name="model">account.move.line</field>
+            <field name="inherit_id" ref="account.view_move_line_tree"/>
+            <field name="priority">1</field>
+            <field name="arch" type="xml">
+                <field name="analytic_account_id" position="after">
+                    <field name="business_area_id"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>

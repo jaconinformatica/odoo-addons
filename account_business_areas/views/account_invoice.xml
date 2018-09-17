@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+# © 2017 Jacon Informatica - Javier Marhuenda <info@jacon.es>
+-->
+<openerp>
+    <data>
+
+        <record id="invoice_form_inherit" model="ir.ui.view">
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <field name="fiscal_position" position="after">
+                    <field name="business_area_id"/>
+                </field>
+                <xpath expr="//page[@string='Invoice Lines']/field[@name='invoice_line']/tree/field[@name='account_id']" position="after">
+                    <field name="business_area_id"/>
+                </xpath>
+                <field name="invoice_line" position="attributes">
+                    <attribute name="context" operation="python_dict" key="business_area_id">business_area_id</attribute>
+                </field>
+            </field>
+        </record>
+
+        <record id="invoice_supplier_form_inherit" model="ir.ui.view">
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+                <field name="origin" position="after">
+                    <field name="business_area_id"/>
+                </field>
+                <xpath expr="//tree[@string='Invoice lines']/field[@name='account_id']" position="after">
+                    <field name="business_area_id"/>
+                </xpath>
+                <field name="invoice_line" position="attributes">
+                    <attribute name="context" operation="python_dict" key="business_area_id">business_area_id</attribute>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_account_invoice_filter" model="ir.ui.view">
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="field[@name='period_id']" position="after">
+                    <field name="business_area_id" string="Area de negocio"/>
+                </xpath>
+                <xpath expr="//filter[@string='Partner']" position="before">
+                    <filter string="Areas de negocio" context="{'group_by':'business_area_id'}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

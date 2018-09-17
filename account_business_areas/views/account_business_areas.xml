@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<!--
+# © 2017 Jacon Informatica - Javier Marhuenda <info@jacon.es>
+-->
+<openerp>
+    <data>
+
+        <!-- Business Areas views -->
+        <record id="account_business_areas_form" model="ir.ui.view">
+            <field name="model">account.business.areas</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <div class="oe_title">
+                                <label for="name"/>
+                                <h1>
+                                    <field name="name"/>
+                                </h1>
+                            </div>
+                        </group>
+                        <group name="main_group">
+                            <group name="main_group1">
+                                <field name="code"/>
+                            </group>
+                            <group name="main_group2">
+                            </group>
+                        </group>
+                        <notebook name="notebook">
+                            <page string="Descripción">
+                                <field name="description" widget="text_html"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="account_business_areas_tree" model="ir.ui.view">
+            <field name="model">account.business.areas</field>
+            <field name="arch" type="xml">
+                <tree string="Business Areas">
+                    <field name="code"/>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="account_business_areas_filter" model="ir.ui.view">
+            <field name="model">account.business.areas</field>
+            <field name="arch" type="xml">
+                <search string="Business Areas">
+                    <field name="name" string="Nombre/Código" filter_domain="['|', ('code','ilike', self), ('name','ilike',self)]"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="account_business_areas_action" model="ir.actions.act_window">
+            <field name="name">Business Areas</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.business.areas</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="account_business_areas_filter"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add a new area.
+                </p>
+                <p>
+                    Business Areas provide an additional analytic analysis
+                </p>
+            </field>
+        </record>
+
+        <!-- Business Areas menu-->
+        <menuitem id="business_areas_menu"
+                  name="Areas de negocio"
+                  parent="account.menu_configuration_misc"
+                  action="account_business_areas_action"
+                  groups="account.group_account_user"
+                  sequence="40"/>
+
+    </data>
+</openerp>
